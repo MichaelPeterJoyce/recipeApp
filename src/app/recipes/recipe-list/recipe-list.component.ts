@@ -10,7 +10,6 @@ import { Recipe } from '../recipe.modal';
 export class RecipeListComponent implements OnInit {
   recipes: Recipe[] = [
     new Recipe('A Test Recipe', 'This is simply a test', 'http://slapdashmom.com/wp-content/uploads/2013/02/greekpizza.jpeg'),
-    new Recipe('A Test Recipe', 'This is simply a test', 'http://slapdashmom.com/wp-content/uploads/2013/02/greekpizza.jpeg')
   ];
 
   constructor() { }
