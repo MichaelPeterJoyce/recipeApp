@@ -1,3 +1,8 @@
-<p>
-  recipe-item works!
-</p>
+<div class="card" style="width: 18rem; margin-bottom: 2rem">
+  <img class="card-img-top" src="{{recipe.imagePath}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{ recipe.name}}</h5>
+    <p class="card-text">{{recipe.description}}</p>
+    <a href="#" (click)="onRecipeItemClicked()" class="btn btn-primary">View Recipe</a>
+  </div>
+</div>

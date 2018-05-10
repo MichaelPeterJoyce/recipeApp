@@ -1,11 +1,15 @@
 <div class="row">
   <div class="col-sm">
-    <img src="" alt="" class="img-fluid">
+    <img [src]="recipe.imagePath"
+         alt="{{recipe.name}}"
+         class="img-fluid"
+         style="max-height: 100px"
+    >
   </div>
 </div>
 <div class="row">
   <div class="col-sm">
-    <h1>Recipe Name</h1>
+    <h1>{{recipe.name}}</h1>
   </div>
 </div>
 <div class="row">
@@ -25,6 +29,11 @@
         </li>
       </ul>
     </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm">
+    {{recipe.description}}
   </div>
 </div>
 <div class="row">
