@@ -17,16 +17,13 @@
     <div class="btn-group" dropdown>
       <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
               aria-controls="dropdown-basic">
-        Button dropdown <span class="caret"></span>
+        Manage Recipe <span class="caret"></span>
       </button>
       <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
           role="menu" aria-labelledby="button-basic">
-        <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
-        <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
-        <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
-        <li class="divider dropdown-divider"></li>
-        <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
-        </li>
+        <li role="menuitem"><a class="dropdown-item" href="#" (click)="addIngredientsToShoppingList()">Add to Shopping List</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="#">Edit Recipe</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="#">Delete Recipe</a></li>
       </ul>
     </div>
   </div>
@@ -38,6 +35,12 @@
 </div>
 <div class="row">
   <div class="col-sm">
-    Ingredients
+    <h4>Ingredients</h4>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let ing of recipe.ingredients">
+        Name: <strong>{{ing.name}}</strong> - <strong>{{ing.amount}}</strong>
+      </li>
+    </ul>
+
   </div>
 </div>

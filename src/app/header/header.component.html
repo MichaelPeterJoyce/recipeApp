@@ -11,9 +11,9 @@
         <a class="nav-link" href="#" (click)="onSelect('recipe')">Recipes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" (click)="onSelect('shopping-list')">Shopping List</a>
+        <a class="nav-link" href="#" (click)="onSelect('shopping-list')">Shopping List ({{ingredients.length}})</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item float-right">
         <div class="btn-group" dropdown>
           <a class="nav-link dropdown-toggle" dropdownToggle href="#" id="navbarDropdown" role="button"
              data-toggle="dropdown"
@@ -30,7 +30,6 @@
             </li>
           </ul>
         </div>
-
       </li>
     </ul>
   </div>

@@ -33,7 +33,7 @@ import {ShoppingListService} from './shopping-list/shopping-list.service';
     TooltipModule.forRoot(),
     ModalModule.forRoot()
   ],
-  providers: [],
+  providers: [ShoppingListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
