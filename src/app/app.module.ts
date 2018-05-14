@@ -14,6 +14,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import {RecipeService} from './recipes/recipe.service';
 import {ShoppingListService} from './shopping-list/shopping-list.service';
+import {AppRoutingModule} from './app-routing/app-routing.module';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {ShoppingListService} from './shopping-list/shopping-list.service';
     BrowserModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [ShoppingListService],
   bootstrap: [AppComponent]
