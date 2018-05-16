@@ -3,6 +3,6 @@
   <div class="card-body">
     <h5 class="card-title">{{ recipe.name}}</h5>
     <p class="card-text">{{recipe.description}}</p>
-    <a href="#" (click)="onRecipeItemClicked()" class="btn btn-primary">View Recipe</a>
+    <a class="btn btn-primary" [routerLink]="[recipe.id]">View Recipe</a>
   </div>
 </div>
