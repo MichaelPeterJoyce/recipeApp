@@ -2,9 +2,13 @@ import {Injectable} from '@angular/core';
 import {Recipe} from './recipe.modal';
 import {Ingredient} from '../shared/ingredient.modal';
 import {Subject} from 'rxjs/internal/Subject';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 @Injectable()
 export class RecipeService {
+  constructor(private http: HttpClient) {
+  }
+
   recipesChnaged = new Subject<Recipe[]>();
   private recipes: Recipe[] = [
     new Recipe(
@@ -33,7 +37,7 @@ export class RecipeService {
 
   getRecipes() {
     // copy array to component
-    return this.recipes.slice();
+    return this.http.get('https://recipeapp-62eda.firebaseio.com/recipes.json');
   }
 
   getRecipeById(id: number) {
@@ -42,6 +46,10 @@ export class RecipeService {
         return recipe;
       }
     }
+  }
+
+  saveRecipes() {
+    return this.http.put('https://recipeapp-62eda.firebaseio.com/recipes.json', this.recipes);
   }
 
   addRecipe(recipe: Recipe) {

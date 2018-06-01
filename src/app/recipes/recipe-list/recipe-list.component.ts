@@ -3,6 +3,8 @@ import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core'
 import {Recipe} from '../recipe.modal';
 import {RecipeService} from '../recipe.service';
 import {Subscription} from 'rxjs/internal/Subscription';
+import {Response} from '@angular/http';
+import {ResponseBodyHandler} from '_debugger';
 
 @Component({
   selector: 'app-recipe-list',
@@ -17,16 +19,26 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-   this.subscription = this.recipeService.recipesChnaged
+    this.subscription = this.recipeService.recipesChnaged
       .subscribe(
         (recipes: Recipe[]) => {
           this.recipes = recipes;
         }
       );
-    this.recipes = this.recipeService.getRecipes();
+    this.recipeService.getRecipes().subscribe((response) => {
+      this.recipes = <Recipe[]> response;
+    });
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  saveRecipes() {
+    this.recipeService.saveRecipes().subscribe(
+      (response) => {
+        console.log(response);
+      }
+    );
   }
 }
