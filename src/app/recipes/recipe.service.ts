@@ -9,35 +9,17 @@ export class RecipeService {
   constructor(private http: HttpClient) {
   }
 
-  recipesChnaged = new Subject<Recipe[]>();
-  private recipes: Recipe[] = [
-    new Recipe(
-      0,
-      'Greek Pizza',
-      'Delicious easy greek pizza',
-      'http://slapdashmom.com/wp-content/uploads/2013/02/greekpizza.jpeg',
-      [
-        new Ingredient('Cheese', 2),
-        new Ingredient('Meat', 2),
-        new Ingredient('Tomato', 2),
-      ]
-    ),
-    new Recipe(
-      1,
-      'Burger',
-      'Delicious easy cheese burger',
-      'http://slapdashmom.com/wp-content/uploads/2013/02/greekpizza.jpeg',
-      [
-        new Ingredient('Cheese', 2),
-        new Ingredient('Meat', 2),
-        new Ingredient('Tomato', 2),
-      ]
-    )
-  ];
+  recipesChanged = new Subject<Recipe[]>();
+  private recipes: Recipe[] = [];
 
   getRecipes() {
-    // copy array to component
-    return this.http.get('https://recipeapp-62eda.firebaseio.com/recipes.json');
+    this.http.get<Recipe[]>('https://recipeapp-62eda.firebaseio.com/recipes.json').subscribe(data => {
+      this.recipes = data;
+      this.recipes.map((recipe, index) => {
+          recipe.id = index;
+      });
+      this.recipesChanged.next(this.recipes.slice());
+    });
   }
 
   getRecipeById(id: number) {
@@ -54,17 +36,17 @@ export class RecipeService {
 
   addRecipe(recipe: Recipe) {
     this.recipes.push(recipe);
-    this.recipesChnaged.next(this.recipes.slice());
+    this.recipesChanged.next(this.recipes.slice());
   }
 
   updateRecipe(index: number, newRecipe: Recipe) {
     this.recipes[index] = newRecipe;
-    this.recipesChnaged.next(this.recipes.slice());
+    this.recipesChanged.next(this.recipes.slice());
   }
 
   deleteRecipe(index: number) {
     this.recipes.splice(index, 1);
-    this.recipesChnaged.next(this.recipes.slice());
+    this.recipesChanged.next(this.recipes.slice());
   }
 
 }

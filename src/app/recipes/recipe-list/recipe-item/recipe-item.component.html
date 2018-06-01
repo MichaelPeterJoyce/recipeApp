@@ -1,9 +1,8 @@
 <mat-card class="example-card" style="width: 13rem; margin-bottom: 2rem">
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>{{recipe.name}}</mat-card-title>
   </mat-card-header>
-  <img mat-card-image [src]="recipe.imagePath">
+  <img mat-card-image style="max-height: 9rem" [src]="recipe.imagePath">
   <mat-card-content>
     <p>
       {{recipe.description}}

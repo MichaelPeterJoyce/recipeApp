@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ShoppingListService} from '../shopping-list/shopping-list.service';
 import {Ingredient} from '../shared/ingredient.modal';
+import {RecipeService} from '../recipes/recipe.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit {
   private ingredients: Ingredient[];
   @Output() featureSelected = new EventEmitter<string>();
 
-  constructor(private shoppingListService: ShoppingListService) {
+  constructor(private shoppingListService: ShoppingListService, private recipeService: RecipeService) {
   }
 
   ngOnInit() {
@@ -24,5 +25,13 @@ export class HeaderComponent implements OnInit {
 
   onSelect(feature: string) {
     this.featureSelected.emit(feature);
+  }
+
+  saveRecipes() {
+    this.recipeService.saveRecipes().subscribe(
+      (response) => {
+        console.log(response);
+      }
+    );
   }
 }

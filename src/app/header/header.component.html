@@ -5,5 +5,8 @@
     <button mat-button routerLink="/shopping-list">Shopping List ({{ingredients.length}})</button>
     <button mat-button routerLink="/recipes">Recipes</button>
     <button mat-button>Contact</button>
+    <span class="example-fill-remaining-space"></span>
+
+    <button mat-button (click)="saveRecipes()">Save</button>
   </mat-toolbar-row>
 </mat-toolbar>
